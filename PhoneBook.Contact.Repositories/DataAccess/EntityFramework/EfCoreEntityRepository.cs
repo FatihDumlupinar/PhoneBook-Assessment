@@ -83,25 +83,25 @@ namespace PhoneBook.Contact.Repositories.DataAccess.EntityFramework
 
         public TEntity Get(Expression<Func<TEntity, bool>> filter = null)
         {
-            var getData = _entities.AsNoTrackingWithIdentityResolution().Single(filter);
+            var getData = _entities.FirstOrDefault(filter);
             return getData;
         }
 
         public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter = null)
         {
-            var getData = await _entities.AsNoTrackingWithIdentityResolution().SingleAsync(filter);
+            var getData = await _entities.FirstOrDefaultAsync(filter);
             return getData;
         }
 
         public IEnumerable<TEntity> GetList(Expression<Func<TEntity, bool>> filter = null)
         {
-            var getData = _entities.AsNoTrackingWithIdentityResolution().Where(filter).ToList();
+            var getData = _entities.Where(filter).ToList();
             return getData;
         }
 
         public async Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> filter = null)
         {
-            var getData = await _entities.AsNoTrackingWithIdentityResolution().Where(filter).ToListAsync();
+            var getData = await _entities.Where(filter).ToListAsync();
             return getData;
         }
 

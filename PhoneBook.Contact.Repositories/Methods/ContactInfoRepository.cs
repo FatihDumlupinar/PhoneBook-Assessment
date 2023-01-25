@@ -58,13 +58,6 @@ namespace PhoneBook.Contact.Repositories.Methods
         private IQueryable<ContactInfo> GetQueryableData(ContactInfoCustomSearchModel model)
         {
             IQueryable<ContactInfo> iQueryableData = _entities.AsQueryable().Where(i => i.IsActive); //AsQueryable where yi sorguları içinde tutuyor
-
-            //kullanıcılar
-            if (model.ContactIds.Any())
-            {
-                iQueryableData = iQueryableData.Where(i => model.ContactIds.Contains(i.Id));
-            }
-
             return iQueryableData;
         }
     }
